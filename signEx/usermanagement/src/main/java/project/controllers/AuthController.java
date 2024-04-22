@@ -34,6 +34,7 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
 
+
     private final PasswordEncoder passwordEncoder;
     private final JWTGenerator jwtGenerator;
     private final RoleRepository roleRepository;
@@ -151,8 +152,6 @@ public class AuthController {
     }
 
 
-//
-//    }
 
 
 }
