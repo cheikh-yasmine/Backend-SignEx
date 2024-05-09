@@ -47,6 +47,8 @@ public class UserServiceImpl implements UserServiceInter{
         usr.setUsername( user.getUsername()  );
         usr.setEmail( user.getEmail()  );
         usr.setPassword( user.getPassword()  );
+        usr.setCompanyName( user.getCompanyName() );
+        usr.setPhone(user.getPhone());
         return userRepository.save(usr);
     }
 

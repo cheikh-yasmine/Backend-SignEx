@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.Objects;
 
 @Service("FileUploadService")
@@ -40,12 +41,12 @@ public class FileUploadService {
         }
     }
 
-    public FileUploadEntity uploadFile(String ownedBy, String description, MultipartFile file) throws IOException {
+    public FileUploadEntity uploadFile(String description, MultipartFile file) throws IOException {
         String originalFileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
         Path targetLocation = this.uploadLocation.resolve(originalFileName);
         Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
         FileUploadEntity theFile = new FileUploadEntity();
-        theFile.setOwnedBy(ownedBy);
+
         theFile.setDescription(description);
         theFile.setType(file.getContentType());
         theFile.setName(originalFileName);
@@ -83,4 +84,10 @@ public class FileUploadService {
             }
         }
     }
+    public List<FileUploadEntity> getAllFiles() {
+        return fileUploadRepository.findAll();
+    }
+
+
+
 }

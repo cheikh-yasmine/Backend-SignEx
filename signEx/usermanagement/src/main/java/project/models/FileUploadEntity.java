@@ -21,8 +21,6 @@ public class FileUploadEntity implements Serializable {
     private String name;
     @Column(name = "file_type", length = 255)
     private String type;
-    @Column(name = "file_owner", length = 255)
-    private String ownedBy;
     @Column(name = "file_description", length = 255)
     private String description;
 
