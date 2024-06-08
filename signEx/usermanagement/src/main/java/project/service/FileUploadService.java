@@ -88,6 +88,8 @@ public class FileUploadService {
         return fileUploadRepository.findAll();
     }
 
-
+    public FileUploadEntity getFileById(Long fileId) {
+        return fileUploadRepository.findById(fileId).orElse(null);
+    }
 
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Blob;
 
 @Data
 @Entity
@@ -25,7 +26,7 @@ public class FileUploadEntity implements Serializable {
     private String description;
 
     @Lob
-    private byte[] file;
+    public byte[] file;
     @Column(name = "upload_dir")
     private String uploadDir;
 

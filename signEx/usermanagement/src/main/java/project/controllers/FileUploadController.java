@@ -1,6 +1,9 @@
 package project.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,7 +19,7 @@ import java.util.List;
 @RequestMapping("/api/files")
 public class FileUploadController {
 
-
+    @Autowired  // Inject the FileUploadService dependency
     private final FileUploadService fileUploadService;
 
 
@@ -56,3 +59,21 @@ public class FileUploadController {
         return new ResponseEntity<>(files, HttpStatus.OK);
     }
 }
+
+
+//@GetMapping("/download/{id}")
+//public ResponseEntity<byte[]> downloadFileById(@PathVariable Long id) throws IOException {
+//    FileUploadEntity file = fileUploadService.getFileById(id);
+//
+//    if (file == null) {
+//        return ResponseEntity.notFound().build();
+//    }
+//
+//   else {
+//        return ResponseEntity.ok()
+//                .contentType(MediaType.parseMediaType(file.getType()))
+//                .contentLength(file.getFile().length)
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"")
+//                .body(file.getFile());
+//    }
+
